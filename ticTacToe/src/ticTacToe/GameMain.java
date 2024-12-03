@@ -1,8 +1,15 @@
 package ticTacToe;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import java.awt.Graphics;
+import java.awt.Font;
 
 
 public class GameMain extends JPanel implements MouseListener{
