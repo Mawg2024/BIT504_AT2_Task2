@@ -13,6 +13,7 @@ import java.awt.Font;
 
 
 public class GameMain extends JPanel implements MouseListener{
+	// this is similar to PongPanel
 	//Constants for game 
 	// number of ROWS by COLS cell constants 
 	public static final int ROWS = 3;     
