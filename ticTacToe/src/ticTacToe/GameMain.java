@@ -19,7 +19,9 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
 	public static final String TITLE = "Tic Tac Toe";
-
+	public static final int WINDOW_WIDTH = 800;
+	public static final int WINDOW_HEIGHT = 600;
+	
 	//constants for dimensions used for drawing
 	//cell width and height
 	public static final int CELL_SIZE = 100;
@@ -67,6 +69,8 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
 
+	
+
 		
 		//TODO: call the method to initialise the game board
 
@@ -78,13 +82,14 @@ public class GameMain extends JPanel implements MouseListener{
 	         public void run() {
 				//create a main window to contain the panel
 				JFrame frame = new JFrame(TITLE);
-				
+				frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 				//TODO: create the new GameMain panel and add it to the frame
-						
+				
+				
 				
 				
 				//TODO: set the default close operation of the frame to exit_on_close
-		            
+		         
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
@@ -104,11 +109,11 @@ public class GameMain extends JPanel implements MouseListener{
 		if (currentState == GameState.Playing) {          
 			statusBar.setForeground(Color.BLACK);          
 			if (currentPlayer == Player.Cross) {   
-			
-				//TODO: use the status bar to display the message "X"'s Turn
 
+				//TODO: use the status bar to display the message "X"'s Turn
+			statusBar.setText("PLayer X, it is your turn");
 				
-			} else {    
+			} else { statusBar.setText("Player O, it is your turn");   
 				
 				//TODO: use the status bar to display the message "O"'s Turn
 
