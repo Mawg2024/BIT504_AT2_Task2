@@ -2,6 +2,7 @@ package ticTacToe;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.JPanel;
@@ -19,8 +20,7 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
 	public static final String TITLE = "Tic Tac Toe";
-	public static final int WINDOW_WIDTH = 800;
-	public static final int WINDOW_HEIGHT = 600;
+	
 	
 	//constants for dimensions used for drawing
 	//cell width and height
@@ -32,6 +32,7 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING * 2;    
 	public static final int SYMBOL_STROKE_WIDTH = 8;
+	protected static final int EXIT_ON_CLOSE = 0;
 	
 	/*declare game object variables*/
 	// the game board 
@@ -51,7 +52,7 @@ public class GameMain extends JPanel implements MouseListener{
 	public GameMain() {   
 		
 		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
-	    
+	    addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
 		statusBar = new JLabel("         ");       
@@ -68,32 +69,38 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		
 		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
-
-	
-
 		
-		//TODO: call the method to initialise the game board
+		board = new Board();
+		add(board);
+		setVisible(true);
 
+		//TODO: call the method to initialise the game board
+		initGame();
 	}
 	
+	private void add(ticTacToe.Board board2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	public static void main(String[] args) {
 		    // Run GUI code in Event Dispatch thread for thread safety.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
 				//create a main window to contain the panel
 				JFrame frame = new JFrame(TITLE);
-				frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				//TODO: create the new GameMain panel and add it to the frame
-				
-				
-				
-				
+				GameMain panel = new GameMain();
+				frame.add(panel);
+								
 				//TODO: set the default close operation of the frame to exit_on_close
-		         
-				
+		        				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+				
 	         }
 		 });
 	}
