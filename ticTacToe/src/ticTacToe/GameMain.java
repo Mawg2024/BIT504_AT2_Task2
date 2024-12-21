@@ -14,7 +14,7 @@ import java.awt.Font;
 
 
 public class GameMain extends JPanel implements MouseListener{
-	// this is similar to PongPanel
+	
 	//Constants for game 
 	// number of ROWS by COLS cell constants 
 	public static final int ROWS = 3;     
@@ -162,13 +162,17 @@ public class GameMain extends JPanel implements MouseListener{
 			if(board.hasWon(thePlayer, row, col)) {
 				
 				// TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
-
+				if (thePlayer == Player.Cross) {
+					currentState = GameState.Cross_won; 
+				}else if (thePlayer == Player.Nought) {
+					currentState = GameState.Nought_won;
+				}
 				
 			} else 
 				if (board.isDraw ()) {
-					
+				
 				// TODO: set the currentstate to the draw gamestate
-
+					currentState = GameState.Draw;	
 			}
 			//otherwise no change to current state of playing
 		}
@@ -199,10 +203,12 @@ public class GameMain extends JPanel implements MouseListener{
 				else {
 					currentPlayer = Player.Cross;
 				}
+				repaint();
 			}             
 		} else {        
 			// game over and restart              
-			initGame();            
+			initGame(); 
+			repaint();
 		}   
 		
 		//TODO: redraw the graphics on the UI          

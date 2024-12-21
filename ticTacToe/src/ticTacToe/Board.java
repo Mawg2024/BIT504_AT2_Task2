@@ -1,4 +1,6 @@
 package ticTacToe;
+// this class creates the game board in a 2D array with rows and columns. 
+//It contains the methods for checking a win or a draw 
 
 import java.awt.*;
 
@@ -48,7 +50,7 @@ public class Board {
 			return true; 
 		
 		 // TODO: Check if the player has 3 in the playerCol.
-		if(cells[playerCol][0].content == thePlayer && cells[playerCol][1].content == thePlayer && cells[playerCol][2].content == thePlayer )
+		if(cells[0][0].content == thePlayer && cells[1][0].content == thePlayer && cells[2][0].content == thePlayer )
 			return true;
 		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
 		
