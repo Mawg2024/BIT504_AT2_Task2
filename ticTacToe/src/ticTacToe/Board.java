@@ -10,15 +10,13 @@ public class Board {
 	public static final int GRID_WIDTH = 8;
 	// grid line half width
 	public static final int GRID_WIDTH_HALF = GRID_WIDTH / 2;
-	
-	
 	//2D array of ROWS-by-COLS Cell instances
 	Cell [][] cells;
 	
-	/** Constructor to create the game board */
+	// Constructor to create the game board 
 	public Board() {
 		
-	 //TODO: initialise the cells array using ROWS and COLS constants 
+	 //to initialise the cells array using ROWS and COLS constants from GameMain
 		cells = new Cell [GameMain.ROWS][GameMain.COLS];
 		
 		for (int row = 0; row < GameMain.ROWS; ++row) {
@@ -28,7 +26,7 @@ public class Board {
 		}
 	}
 	
-	 /** Return true if it is a draw (i.e., no more EMPTY cells) */ 
+// IsDraw boolean method to check if the game is a draw. Check if any of the cells content are Player.Empty. If they are it is not a draw. Method returns false if not a draw, true if it is a draw.  it is not a draw and the method game continues.
 	public boolean isDraw() {
 		 for (int row = 0; row < GameMain.ROWS; row++) {
 			 for (int col = 0; col < GameMain.COLS; col++) {
@@ -39,41 +37,43 @@ public class Board {
 		 }
 		 return true;
 	}
-		// TODO: Check whether the game has ended in a draw. 
-		// Hint: Use a nested loop (see the constructor for an example). Check whether any of the cells content in the board grid are Player.Empty. If they are, it is not a draw.
-		// Hint: Return false if it is not a draw, return true if there are no empty positions left
+		
 	
-	/** Return true if the current player "thePlayer" has won after making their move  */
+	// Has won method to find if a player has won a game with  3 in a row, 3 in a column or 3 in a diagonal. Return true if the current player "thePlayer" has won after making their move
 	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
-		 // check if player has 3-in-that-row
+		
+		// check if player has 3-in-that-row
 		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
 			return true; 
 		
-		 // TODO: Check if the player has 3 in the playerCol.
+		 // Check if the player has 3 in the first playerCol.
 		if(cells[0][0].content == thePlayer && cells[1][0].content == thePlayer && cells[2][0].content == thePlayer )
 			return true;
-		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
 		
+		 // Check if the player has 3 in the second playerCol.
+		if(cells[0][1].content == thePlayer && cells[1][1].content == thePlayer && cells[2][1].content == thePlayer )
+			return true;
 		
-		
-		 // 3-in-the-diagonal
+		// Check if the player has 3 in the third playerCol.
+		if(cells[0][2].content == thePlayer && cells[1][2].content == thePlayer && cells[2][2].content == thePlayer )
+			return true;
+			
+		// check if player has 3-in-the-diagonal from top left to bottom right cell
 		if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer)
 			return true;
-		 
 		
-		// TODO: Check the diagonal in the other direction
+		// Check if player has 3 in the diagonal from bottom left hand to top right hand cell
 		if( cells[2][0].content == thePlayer && cells[1][1].content == thePlayer && cells[0][2].content == thePlayer)
 			return true;
-
-		
-		//no winner, keep playing
+	
+		//if there is no winner, keep playing
 		return false;
 	}
 	
-	/**
-	 * Draws the grid (rows then columns) using constant sizes, then call on the
-	 * Cells to paint themselves into the grid
-	 */
+	
+	 //Draws the grid (rows then columns) using constant sizes, then call on the
+	// Cells to paint themselves into the grid
+	 
 	public void paint(Graphics g) {
 		//draw the grid
 		g.setColor(Color.gray);
